@@ -2,9 +2,8 @@ import React, { useContext } from 'react';
 import DoneTodos from '../DoneTodos/DoneTodos';
 import { TodoContext } from '../../context/TodoContext';
 
-const ListOfTodo = ({ todos, valid }) => {
-  const TodosList = useContext(TodoContext);
-  console.log(TodosList);
+const ListOfTodo = ({ valid }) => {
+  const { todos } = useContext(TodoContext);
   return (
     <div>
       {!valid && (

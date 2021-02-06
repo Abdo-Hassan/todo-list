@@ -4,18 +4,14 @@ import ListOfTodo from './ListOfTodo';
 import { TodoContext } from '../../context/TodoContext';
 
 const Todos = () => {
-  const newDate = new Date().toISOString().split('T')[0];
-
-  const TodosList = useContext(TodoContext);
-  const [todos, setTodos] = useState(TodosList);
+  const { addTodo, clearList } = useContext(TodoContext);
   const [newTodo, setNewTodo] = useState('');
   const [valid, setValid] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let newId = todos && todos.length > 0 ? todos[todos.length - 1].id : 0;
     if (newTodo) {
-      setTodos([...todos, { id: ++newId, todo: newTodo, date: newDate }]);
+      addTodo(newTodo);
       setNewTodo('');
       setValid(true);
     } else {
@@ -44,12 +40,12 @@ const Todos = () => {
           id='clear-list'
           type='button'
           className='btn btn-dark m-2'
-          onClick={() => setTodos([])}
+          onClick={() => clearList()}
         >
           Clear list
         </Button>
       </div>
-      <ListOfTodo todos={todos} valid={valid} />
+      <ListOfTodo valid={valid} />
     </form>
   );
 };
