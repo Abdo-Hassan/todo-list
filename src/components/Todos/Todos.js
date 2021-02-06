@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { TodosData } from '../../data/data';
 import { Button } from 'react-bootstrap';
 import ListOfTodo from './ListOfTodo';
@@ -38,7 +38,12 @@ const Todos = () => {
         <Button type='submit' className='btn btn-primary'>
           Add todo
         </Button>
-        <Button id='clear-list' type='button' className='btn btn-dark m-2'>
+        <Button
+          id='clear-list'
+          type='button'
+          className='btn btn-dark m-2'
+          onClick={() => setTodos([])}
+        >
           Clear list
         </Button>
       </div>
