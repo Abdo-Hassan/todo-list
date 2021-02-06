@@ -1,38 +1,130 @@
-.App {
+body {
+  background-color: #f3f3f3 !important;
+}
+
+.wrapper {
+  margin: 20px;
+}
+
+.wrapper h1 {
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper .todo-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.wrapper .done-wrapper {
+  display: none;
+  margin-top: 30px;
+}
+.wrapper .done-wrapper .done-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.wrapper .done-wrapper h2 {
+  text-align: center;
+}
+
+.wrapper form input[type='text'] {
+  width: 30% !important;
+  margin-right: 20px;
+  box-shadow: none;
+  padding: 10px 13px;
+}
+
+.wrapper .list-group {
+  align-items: center;
+  margin-top: 20px;
+}
+.wrapper button {
+  padding: 8px 17px;
+}
+
+.wrapper .invalid {
+  display: none;
+  width: 50%;
+  margin: 20px auto 0;
+}
+
+.wrapper .list-group-item,
+.wrapper .list-group input {
+  width: 50%;
+  padding: 17px 13px;
+  border-top-width: 1px;
+  margin: 13px 0 0;
+}
+
+.wrapper .done-wrapper .list-group-item {
+  text-decoration: line-through;
+}
+.wrapper .list-group-item .todo-date,
+.wrapper .done-wrapper .list-group-item .todo-date-done {
+  position: absolute;
+  top: 19px;
+  right: 84px;
+  color: #a19e9e;
+  font-size: 13px;
+}
+
+.wrapper .done-wrapper .list-group-item .todo-date-done {
+  right: 20px;
+}
+
+.wrapper .list-group-item .done,
+.wrapper .list-group-item .remove {
+  position: relative;
+  top: 3px;
+  color: green;
+  cursor: pointer;
+  font-size: 21px;
+}
+
+.wrapper .list-group-item .remove {
+  position: absolute;
+  right: 17px;
+  top: 22px;
+  color: red;
+}
+.wrapper .list-group-item .edit {
+  position: absolute;
+  color: #3f51b5;
+  right: 47px;
+  top: 22px;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.wrapper .list-group-item span {
+  margin-left: 6px;
+}
+.wrapper .list-group-item .done:hover {
+  background-color: rgba(163, 163, 163, 0.28);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper .list-group-item,
+  wrapper .invalid {
+    width: 100%;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media only screen and (max-width: 1200px) {
+  .wrapper form input[type='text'] {
+    width: 60% !important;
+  }
+  .wrapper .list-group-item,
+  .wrapper .invalid {
+    width: 90%;
   }
 }
