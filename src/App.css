@@ -47,7 +47,6 @@ body {
 }
 
 .wrapper .invalid {
-  display: none;
   width: 50%;
   margin: 20px auto 0;
 }

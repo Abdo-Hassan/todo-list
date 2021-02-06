@@ -6,20 +6,23 @@ import ListOfTodo from './ListOfTodo';
 const Todos = () => {
   const newDate = new Date().toISOString().split('T')[0];
   const [todos, setTodos] = useState(TodosData);
-  const [newTodo, setNewTodo] = useState({});
+  const [newTodo, setNewTodo] = useState('');
+  const [valid, setValid] = useState(true);
 
-  const handleClick = () => {
-    setTodos([...todos, newTodo]);
-  };
-
-  const handleChange = (e) => {
-    const todoValue = e.target.value;
+  const handleSubmit = (e) => {
+    e.preventDefault();
     let newId = todos[todos.length - 1].id ? todos[todos.length - 1].id : 0;
-    setNewTodo({ ...newTodo, id: ++newId, todo: todoValue, date: newDate });
+    if (newTodo) {
+      setTodos([...todos, { id: ++newId, todo: newTodo, date: newDate }]);
+      setNewTodo('');
+      setValid(true);
+    } else {
+      setValid(false);
+    }
   };
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <div className='todo-wrapper'>
         <input
           type='text'
@@ -29,17 +32,18 @@ const Todos = () => {
           placeholder='Add new to do'
           name='todo'
           autoFocus
-          onChange={handleChange}
+          onChange={(e) => setNewTodo(e.target.value)}
+          value={newTodo}
         />
-        <Button type='submit' className='btn btn-primary' onClick={handleClick}>
+        <Button type='submit' className='btn btn-primary'>
           Add todo
         </Button>
         <Button id='clear-list' type='button' className='btn btn-dark m-2'>
           Clear list
         </Button>
       </div>
-      <ListOfTodo todos={todos} />
-    </>
+      <ListOfTodo todos={todos} valid={valid} />
+    </form>
   );
 };
 
