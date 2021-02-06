@@ -3,12 +3,15 @@ import TodosContainer from './components/TodosContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // main style
 import './App.css';
+import TodoContextProvider from './context/TodoContext';
 
 function App() {
   return (
-    <div className='App'>
-      <TodosContainer />
-    </div>
+    <TodoContextProvider>
+      <div className='App'>
+        <TodosContainer />
+      </div>
+    </TodoContextProvider>
   );
 }
 

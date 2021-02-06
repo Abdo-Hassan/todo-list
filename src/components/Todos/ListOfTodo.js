@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import DoneTodos from '../DoneTodos/DoneTodos';
+import { TodoContext } from '../../context/TodoContext';
 
 const ListOfTodo = ({ todos, valid }) => {
+  const TodosList = useContext(TodoContext);
+  console.log(TodosList);
   return (
     <div>
       {!valid && (
@@ -19,6 +23,7 @@ const ListOfTodo = ({ todos, valid }) => {
           </li>
         ))}
       </ul>
+      <DoneTodos />
     </div>
   );
 };

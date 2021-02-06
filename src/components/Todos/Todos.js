@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import { TodosData } from '../../data/data';
+import React, { useState, useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import ListOfTodo from './ListOfTodo';
+import { TodoContext } from '../../context/TodoContext';
 
 const Todos = () => {
   const newDate = new Date().toISOString().split('T')[0];
-  const [todos, setTodos] = useState(TodosData);
+
+  const TodosList = useContext(TodoContext);
+  const [todos, setTodos] = useState(TodosList);
   const [newTodo, setNewTodo] = useState('');
   const [valid, setValid] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let newId = todos[todos.length - 1].id ? todos[todos.length - 1].id : 0;
+    let newId = todos && todos.length > 0 ? todos[todos.length - 1].id : 0;
     if (newTodo) {
       setTodos([...todos, { id: ++newId, todo: newTodo, date: newDate }]);
       setNewTodo('');
