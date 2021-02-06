@@ -31,7 +31,7 @@ body {
   text-align: center;
 }
 
-.wrapper form input[type='text'] {
+.wrapper input[type='text'] {
   width: 30% !important;
   margin-right: 20px;
   box-shadow: none;
@@ -120,7 +120,7 @@ body {
 }
 
 @media only screen and (max-width: 1200px) {
-  .wrapper form input[type='text'] {
+  .wrapper input[type='text'] {
     width: 60% !important;
   }
   .wrapper .list-group-item,
